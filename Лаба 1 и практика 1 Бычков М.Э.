@@ -1,0 +1,236 @@
+package com.company;
+import java.util.Scanner;
+public class Main {
+
+    public static void main(String[] args) {
+        int[] b= new int[]{1,2,3,4,5,6,7,8,9,0};
+        int sum=0;
+        for(int i=0;i<b.length; i++)
+        {
+            sum=sum+b[i];
+        }
+        System.out.println(sum);
+        sum=0;
+        int i=0;
+        while(i<b.length)
+        {
+            sum=sum+b[i];
+            i++;
+        }
+        System.out.println(sum);
+        i=0;
+        sum=0;
+        do {
+            sum=sum+b[i];
+            i++;
+        }while(i<b.length);
+        System.out.println(sum);
+
+
+
+        		        //number 2
+        for( i=0;i<args.length; i++)
+        
+	{
+            
+		System.out.print(args[i]+" ");
+       
+		 }
+
+
+        //number 3\
+        System.out.println("\nРяд: ");
+        double a=1;
+        for(double f=1;f<11;f++)
+        {
+            if (f==1)
+            {
+
+            }
+            else
+                {
+               a=1/f;
+                }
+            System.out.print( a+" " );
+        }
+
+
+        //number 4
+        int[] arr = new int[10];
+        for(i = 0; i < arr.length; i++ ) {
+            arr[i] = (int)(Math.random()*100);
+        }
+        System.out.println("\nСтарый массив");
+        for ( int d: arr)
+            System.out.print( d + " " );
+        for(int g = arr.length-1 ; i > 0 ; i--)
+        {
+            for(int j = 0 ; j < g ; j++)
+            {
+                if( arr[j] > arr[j+1] )
+                {
+                    int tmp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = tmp;
+                }
+            }
+        }
+        System.out.println("\nНовый массив");
+        for ( int d: arr)
+            System.out.print( d + " " );
+
+        //number 5
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Введите число:");
+        int t = scan.nextInt();
+        //sc.close();
+        int result = 1;
+        for (int d = 1; d <= t; d++)
+        {
+            result = result * d;
+        }
+        System.out.println( "Факториал "+ t+" = "+result);
+    }
+}
+
+
+package com.company;
+import java.lang.*;
+public class Dog {
+    private String name;
+    private int age;
+
+    public Dog(String a, int b)
+    {
+        name=a;
+        age=b;
+    }
+
+    public void SetName(String name)
+    {
+        this.name=name;
+    }
+
+    public void massage ()
+    {
+        System.out.println("Имя собаки: "+name+" ,Возраст: "+age);
+    }
+}
+
+
+package com.company;
+import java.util.Scanner;
+import java.lang.*;
+public class TestDog
+{
+    public static void main(String[] args)
+    {
+        Dog a = new Dog("Шарик", 5);
+        Dog b = new Dog("Тазик", 3);
+        Dog c = new Dog("Пуфик", 1);
+        a.massage();
+        a.SetName("Бобик");
+        a.massage();
+        b.massage();
+        c.massage();
+
+    }
+}
+
+
+
+
+
+
+
+
+package com.company;
+import java.lang.*;
+
+public class Ball
+{
+   private int length;
+    private int width;
+    private int heigth;
+    private String color;
+    public Ball(int x, int y, int z,String a)
+    {
+        length=x;
+        width=y;
+        heigth=z;
+        color=a;
+    }
+
+    public int GetHeigth()
+    {
+        return heigth;
+    }
+
+    public String GetColor()
+    {
+        return color;
+    }
+
+    public void message()
+    {
+        System.out.println("Длина: "+length+", Ширина: "+ width+", Высота: "+heigth+", Цвет: "+color);
+    }
+}
+
+
+
+package com.company;
+
+
+public class TestBall {
+    public static void main(String[] args) {
+        Ball a = new Ball(50, 32, 54, "red");
+        Ball b = new Ball(30, 50, 12, "green");
+        System.out.println("Цвет мяча: "+a.GetColor());
+        a.message();
+        b.message();
+        System.out.println("Высота мяча: "+b.GetHeigth());
+    }
+}
+
+
+package com.company;
+
+public class Book
+{
+    private int year;
+    private String author;
+    private String name;
+
+    public Book(String a, String b, int c)
+    {
+        author=a;
+        name=b;
+        year=c;
+    }
+
+    public String GetName()
+    {
+        return name;
+    }
+
+    public void message()
+    {
+        System.out.println("Автор: "+author+", Название: "+name+", Год: "+year);
+    }
+}
+
+
+package com.company;
+
+public class TestBook
+{
+    public static void main(String[] args) {
+        Book a = new Book("Пушкин","Капитанская дочка",1836);
+        Book b = new Book("Гоголь","Мертвые души",1842);
+        System.out.println("Название: "+a.GetName());
+        a.message();
+        b.message();
+    }
+}
+
