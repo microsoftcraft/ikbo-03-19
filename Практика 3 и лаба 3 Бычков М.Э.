@@ -1,0 +1,798 @@
+package com.company;		//number 1
+
+public abstract class Shape
+{
+
+}
+
+package com.company;
+
+public class Circle  extends Shape
+{
+
+}
+
+package com.company;
+
+public class Rectangle extends Shape
+{
+}
+
+package com.company;
+
+public class Square extends Rectangle 
+{
+}
+
+
+
+
+
+
+package com.company;		//number 2
+
+public abstract class Shape
+{
+    protected String color;
+    protected boolean filled;
+    public Shape (String color, boolean filled)
+    {
+        this.color=color;
+        this.filled=filled;
+    }
+    public Shape ()
+    {
+        color="red";
+        filled=true;
+    }
+    public String getColor ()
+    {
+        return color;
+    }
+    public void setColor (String color)
+    {
+        this.color = color;
+    }
+    public boolean isFilled ()
+    {
+        return filled;
+    }
+    public void setFilled (boolean filled)
+    {
+        this.filled = filled;
+    }
+    abstract public double getArea();
+    abstract public double getPerimeter();
+    abstract public String toString();
+}
+
+
+package com.company;
+import java.math.*;
+public class Circle  extends Shape
+{
+    protected double radius;
+
+    public Circle(double radius, String color, boolean filled)
+    {
+        this.radius=radius;
+        this.color=color;
+        this.filled=filled;
+    }
+    public Circle(double radius)
+    {
+        this.filled = false;
+        this.color = "blue";
+        this.radius = radius;
+    }
+    public Circle()
+    {
+        this.filled = false;
+        this.color = "blue";
+        radius = 1;
+    }
+    public double getRadius()
+    {
+        return radius;
+    }
+    public void setRadius(double radius)
+    {
+        this.radius = radius;
+    }
+    public double getArea()
+    {
+        return Math.PI *radius*radius;
+    }
+    public double getPerimeter()
+    {
+        return 2 * Math.PI * radius;
+    }
+    public String toString()
+    {
+        return "Shape: circle, radius: "+this.radius+", color: "+this.color;
+    }
+}
+
+
+package com.company;
+
+public class Rectangle extends Shape
+{
+    protected double width;
+    protected double length;
+    public Rectangle(double width, double length, String color, boolean filled)
+    {
+        this.filled = false;
+        this.color = "blue";
+        this.width=width;
+        this.length=length;
+    }
+    public Rectangle(double width, double length)
+    {
+        this.filled = false;
+        this.color = "blue";
+        this.width=width;
+        this.length=length;
+    }
+    public Rectangle()
+    {
+        width=1;
+        length=1;
+    }
+    public double getWidth()
+    {
+        return width;
+    }
+    public void setWidth(double width)
+    {
+        this.width = width;
+    }
+    public double getLength()
+    {
+        return length;
+    }
+    public void setLength(double length)
+    {
+        this.length = length;
+    }
+    public double getArea()
+    {
+        return width * length;
+    }
+    public double getPerimeter()
+    {
+        return  (width + length)*2;
+    }
+    public String toString()
+    {
+        return "Rectangle with width=" + width +
+                ", length=" + length +
+                ", area=" + getArea() +
+                ", color="+getColor()+
+                ", is filled="+isFilled()+
+                ", perimeter=" + getPerimeter();
+    }
+
+}
+
+
+package com.company;
+
+public class Square extends Rectangle
+{
+    public Square(double side, String color, boolean filled)
+    {
+        this.width=side;
+        this.length=side;
+        this.filled = false;
+        this.color = "blue";
+    }
+    public Square(double side)
+    {
+        this.width=side;
+        this.length=side;
+    }
+    public Square()
+    {
+        width=1;
+        length=1;
+    }
+    public double getSide()
+    {
+        return width;
+    }
+    public void setSide(double side)
+    {
+        width = side; length = side;
+    }
+    public void setWidth(double side)
+    {
+        setSide(side);
+    }
+    public void setLength(double side)
+    {
+        setSide(side);
+    }
+    public String toString()
+    {
+        return "Square with side=" + getSide() +
+                ", area=" + getArea() +
+                ", color="+getColor()+
+                ", is filled="+isFilled()+
+                ", perimeter=" + getPerimeter();
+    }
+
+}
+
+
+
+
+
+
+package com.company;		//number 3
+
+public class TestShape
+{
+    public static void main(String[] args) {
+        Shape s1 = new Circle(5.5, "RED", false);
+        System.out.println(s1);
+        System.out.println(s1.getArea());
+        System.out.println(s1.getPerimeter());
+        System.out.println(s1.getColor());
+        System.out.println(s1.isFilled());
+        // Ошибка: у класса Shape нет метода getRadius()
+        //System.out.println(s1.getRadius());
+        Circle c1 = (Circle)s1;
+        System.out.println(c1);
+        System.out.println(c1.getArea());
+        System.out.println(c1.getPerimeter());
+        System.out.println(c1.getColor());
+        System.out.println(c1.isFilled());
+        // у класса Circle есть метод getRadius()
+        System.out.println(c1.getRadius());
+        // Ошибка: нельзя создать экземпляр абстрактного класса
+        //Shape s2 = new Shape();
+        Shape s3 = new Rectangle(1.0, 2.0, "RED", false);
+        System.out.println(s3);
+        System.out.println(s3.getArea());
+        System.out.println(s3.getPerimeter());
+        System.out.println(s3.getColor());
+        // Ошибка: у класса Shape не метода getLength()
+        //System.out.println(s3.getLength());
+        Rectangle r1 = (Rectangle)s3;
+        System.out.println(r1);
+        System.out.println(r1.getArea());
+        System.out.println(r1.getColor());
+        // у класса Rectangle есть метод getLength()
+        System.out.println(r1.getLength());
+        Shape s4 = new Square(6.6);
+        System.out.println(s4);
+        System.out.println(s4.getArea());
+        System.out.println(s4.getColor());
+        // Ошибка: у класса Shape нет метода getSide()
+        //System.out.println(s4.getSide());
+        Rectangle r2 = (Rectangle)s4;
+        System.out.println(r2);
+        System.out.println(r2.getArea());
+        System.out.println(r2.getColor());
+        // Ошибка: у класса Rectangle тоже нет метода getSide()
+        //System.out.println(r2.getSide());
+        System.out.println(r2.getLength());
+        Square sq1 = (Square)r2;
+        System.out.println(sq1);
+        System.out.println(sq1.getArea());
+        System.out.println(sq1.getColor());
+        // у класса Square есть метод getSide()
+        System.out.println(sq1.getSide());
+        System.out.println(sq1.getLength());
+    }
+    }
+
+
+
+
+
+
+package com.company;		//number 4
+
+public interface Movable
+{
+    void moveUp ();
+    void moveDown ();
+    void moveLeft ();
+    void moveRight ();
+}
+
+
+package com.company;
+
+public class MovablePoint  implements Movable
+{
+    protected int x;
+    protected int y;
+    protected int xSpeed;
+    protected int ySpeed;
+    public MovablePoint (int x, int y, int xSpeed, int ySpeed)
+    {
+        this.x = x;
+        this.y = y;
+        this.xSpeed = xSpeed;
+        this.ySpeed = ySpeed;
+    }
+    public String toString()
+    {
+        return "Point (" + x + ", " + y + ")";
+    }
+    public void moveUp()
+    {
+        y++;
+    }
+    public void moveDown()
+    {
+        y--;
+    }
+    public void moveRight()
+    {
+        x++;
+    }
+    public void moveLeft()
+    {
+        x--;
+    }
+}
+
+
+package com.company;
+
+public class MovableCircle implements Movable
+{
+    protected int radius;
+    protected MovablePoint center;
+    public MovableCircle(int x, int y, int xSpeed, int ySpeed, int radius)
+    {
+        this.radius = radius;
+        this.center = new MovablePoint(x, y, xSpeed, ySpeed);
+    }
+    public String toString()
+    {
+        return "Circle (" + center.x + ", " +
+            center.y + ") with radius=" + radius;
+    }
+    public void moveUp()
+    {
+        center.moveUp();
+    }
+    public void moveDown()
+    {
+        center.moveDown();
+    }
+    public void moveRight()
+    {
+        center.moveRight();
+    }
+    public void moveLeft()
+    {
+        center.moveLeft();
+    }
+
+}
+
+
+
+
+
+
+package com.company;		//number 5
+
+public class MovableRectangle implements Movable
+{
+    private MovablePoint topLeft;
+    private MovablePoint bottomRight;
+    public MovableRectangle (int x1, int y1, int x2, int y2, int xSpeed,
+                             int ySpeed) {
+        this.topLeft = new MovablePoint(x1, y1, xSpeed, ySpeed);
+        this.bottomRight = new MovablePoint(x2, y2, xSpeed, ySpeed);
+    }
+    public String toString()
+    {
+        return "Rectangle (" + topLeft.x + ", " + topLeft.y + ", " +
+                bottomRight.x + ", " + bottomRight.y + ")";
+    }
+    public void moveUp()
+    {
+        topLeft.moveUp(); bottomRight.moveUp();
+    }
+    public void moveDown()
+    {
+        topLeft.moveDown(); bottomRight.moveDown();
+    }
+    public void moveRight()
+    {
+        topLeft.moveRight();
+        bottomRight.moveRight();
+    }
+    public void moveLeft()
+    {
+        topLeft.moveLeft(); bottomRight.moveLeft();
+    }
+}
+
+
+
+
+
+
+package com.company;		//number 5
+
+public class TestMovable
+{
+    public static void main(String[] args) {
+        // Создаем экземпляр класса MovablePoint
+        MovablePoint point = new MovablePoint(0, 0, 1, 1);
+        System.out.println(point);
+        // Двигаем point вверх и влево
+        point.moveUp();
+        point.moveLeft();
+        System.out.println(point);
+        // Создаем экземпляр класса MovableCircle
+        MovableCircle circle = new MovableCircle(0, 0, 1, 1, 2);
+        System.out.println(circle);
+        // Двигаем circle вниз и вправо
+        circle.moveDown();
+        circle.moveRight();
+        System.out.println(circle);
+        // Создаем экземпляр класса MovableRectangle
+        MovableRectangle rectangle = new MovableRectangle(0, 0, 1, 1, 1,
+                1);
+        System.out.println(rectangle);
+        // Двигаем rectangle вверх и влево
+        rectangle.moveUp();
+        rectangle.moveLeft();
+        System.out.println(rectangle);
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+package com.company;		//number 1
+
+abstract class Dish
+{
+    protected int price;
+
+    public Dish(){};
+    public Dish(int price)
+    {
+        this.price=price;
+    }
+    
+    public void SetPrice(int price)
+    {
+        this.price=price;
+    }
+    
+    public int GetPrice()
+    {
+        return price;
+    }
+    abstract public String toString();
+    
+}
+
+package com.company;
+
+public class Plate extends Dish
+{
+    private String material;
+    public Plate (int price,String material)
+    {
+       this.price=price;
+       this.material=material;
+    }
+
+    public String GetMaterial()
+    {
+        return material;
+    }
+    public  void SetMaterial(String material)
+    {
+        this.material=material;
+    }
+    public String toString()
+    {
+        return "Тарелка: Материал: "+GetMaterial()+" Цена: "+GetPrice();
+    }
+}
+
+package com.company;
+
+public class Fork extends Dish
+{
+    private String material;
+
+    public Fork(int price, String material)
+    {
+        this.price=price;
+        this.material=material;
+    }
+    public String GetMaterial()
+    {
+        return material;
+    }
+
+    public  void SetMaterial(String material)
+    {
+        this.material=material;
+    }
+    public String toString()
+    {
+        return "Вилка: Материал:"+GetMaterial()+" Цена: "+GetPrice();
+    }
+}
+
+package com.company;
+
+public class TestDish
+{
+    public static void main(String[] args)
+    {
+        Dish dish = new Plate(21,"glass");
+        System.out.println(dish);
+        System.out.println("Price: "+dish.GetPrice());
+        Plate plate = (Plate)dish;
+        plate.SetMaterial("plactic");
+        System.out.println("Material:"+plate.GetMaterial());
+        System.out.println(plate);
+        Dish fork=new Fork(46,"glass");
+        fork.SetPrice(10);
+        Fork ffork=(Fork)fork;
+        ffork.SetMaterial("wood");
+        System.out.println(ffork);
+    }
+}
+
+
+
+
+
+package com.company;		//number 2
+import java.lang.*;
+abstract class Dog
+{
+    private String name;
+    private int age;
+    public Dog(){};
+    public Dog(String name, int age)
+    {
+        this.name=name;
+        this.age=age;
+    }
+
+    public void SetName(String name)
+    {
+        this.name=name;
+    }
+    public String GetName()
+    {
+        return name;
+    }
+    public void SetAge(int age)
+    {
+        this.age=age;
+    }
+    public int GetAge()
+    {
+        return age;
+    }
+    abstract public String toString();
+
+}
+
+package com.company;
+
+public class Dog2 extends Dog
+{
+    private String name;
+    private int age;
+    public Dog2(String name,int age)
+    {
+        this.age=age;
+        this.name=name;
+    }
+    public void SetName(String name)
+    {
+        this.name=name;
+    }
+    public String GetName()
+    {
+        return name;
+    }
+    public void SetAge(int age)
+    {
+        this.age=age;
+    }
+    public int GetAge()
+    {
+        return age;
+    }
+    public String toString()
+    {
+        return "Name:"+GetName()+" Age:"+GetAge();
+    }
+}
+
+package com.company;
+
+public class Dog3 extends Dog
+{
+    private String name;
+    private int age;
+    public Dog3(String name,int age)
+    {
+        this.age=age;
+        this.name=name;
+    }
+    public void SetName(String name)
+    {
+        this.name=name;
+    }
+    public String GetName()
+    {
+        return name;
+    }
+    public void SetAge(int age)
+    {
+        this.age=age;
+    }
+    public int GetAge()
+    {
+        return age;
+    }
+    public String toString()
+    {
+        return "Name:"+GetName()+" Age:"+GetAge();
+    }
+}
+
+package com.company;
+import java.util.Scanner;
+import java.lang.*;
+public class TestDog
+{
+    public static void main(String[] args)
+    {
+        Dog dog = new Dog2("Шарик", 5);
+        System.out.println(dog);
+        dog.SetName("Бобик");
+        dog.SetAge(6);
+        System.out.println("Information:"+dog.GetName()+" "+dog.GetAge());
+        Dog2 dog2 = (Dog2)dog;
+        System.out.println(dog2);
+        Dog dog3 = new Dog3("Name",0);
+        dog3.SetName("Тэльма");
+        dog3.SetAge(2);
+        System.out.println(dog3);
+    }
+}
+
+
+
+
+
+
+
+package com.company;		//number 3
+
+abstract class Furniture
+{
+    private int price;
+    private String material;
+
+    public Furniture(){};
+
+    public Furniture(int price,String material)
+    {
+        this.price=price;
+        this.material=material;
+    }
+
+    public void SetPrice(int price)
+    {
+        this.price=price;
+    }
+    public int GetPrice()
+    {
+        return price;
+    }
+    public void SetMaterial(String material)
+    {
+        this.material=material;
+    }
+    public String GetMaterial()
+    {
+        return material;
+    }
+
+    abstract public String toString();
+
+}
+
+
+
+
+package com.company;
+
+public class Table extends Furniture
+{
+    private int price;
+    private String material;
+    public Table(int prcie, String material)
+    {
+        this.price=price;
+        this.material=material;
+    }
+
+    public String toString()
+    {
+        return "Table: Price:"+GetPrice()+" Material:"+GetMaterial();
+    }
+}
+
+package com.company;
+
+public class Stool extends Furniture
+{
+    private int price;
+    private String material;
+
+    public Stool(int price,String material)
+    {
+        this.price=price;
+        this.material=material;
+    }
+
+    public String toString()
+    {
+        return "Stool: Price:"+GetPrice()+" Material:"+GetMaterial();
+    }
+}
+
+
+package com.company;
+
+public class FurnitureShop
+{
+    public static void main(String[] args)
+    {
+        Furniture f1=new Table (65,"material");
+        f1.SetMaterial("wood");
+        f1.SetPrice(650);
+        System.out.println(f1);
+        Table f2= (Table)f1;
+        f2.SetMaterial("glass");
+        System.out.println(f2);
+        Furniture f3=new Stool(0,"material");
+        f3.SetPrice(942);
+        f3.SetMaterial("plactic");
+        System.out.println("Info: Price:"+f3.GetPrice()+" Material:"+f3.GetMaterial());
+        System.out.println(f3);
+    }
+}
+
