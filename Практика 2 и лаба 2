@@ -1,0 +1,309 @@
+package com.company;		//number 1
+
+public class Author {
+    private String name;
+    private String email;
+    private char gender;
+
+    public Author (String name, String email, char gender)
+    {
+        this.name = name;
+        this.email=email;
+        this.gender = gender;
+    }
+    public String GetName()
+    {
+        return name;
+    }
+    public char GetGender()
+    {
+        return gender;
+    }
+    public String GetEmail()
+    {
+        return email;
+    }
+    public void SetEmail(String email)
+    {
+        this.email = email;
+    }
+    public String toString()
+    {
+        return GetName() + " (" + GetGender() + ") at " + GetEmail();
+    }
+}
+
+
+
+package com.company;
+
+public class TestAuthor
+{
+    public static void main(String[] args)
+    {
+        Author author = new Author("Ivan Popov",
+                "ivPopov@somewhere.com ", 'м');
+        System.out.println(author.toString());
+        System.out.println("Пол: "+author.GetGender());
+        author.SetEmail("new_email@mail.com");
+        System.out.println("Новая почта: "+author.GetEmail());
+        System.out.println(author.toString());
+    }
+
+}
+
+
+
+
+
+package com.company;	//number 2
+
+public class Ball
+{
+    private double x=0.0;
+    private double y=0.0;
+
+    public Ball (double x, double y)
+    {
+        this.x=x;
+        this.y=y;
+    }
+    public Ball ()    {    }
+
+    public double GetX ()
+    {
+        return x;
+    }
+    public double GetY ()
+    {
+        return y;
+    }
+    public void SetX (double x)
+    {
+        this.x = x;
+    }
+    public void SetY (double y)
+    {
+        this.y = y;
+    }
+    public void SetXY (double x, double y)
+    {
+        this.x=x;
+        this.y=y;
+    }
+    public void Move (double x1, double y1)
+    {
+        x+=x1;  y+=y1;
+    }
+    public String toString()
+    {
+        return "Ball @ (" + this.x + ", " + this.y + ")";
+    }
+
+}
+
+package com.company;
+
+
+public class TestBall {
+    public static void main(String[] args)
+    {
+        Ball ball = new Ball(100, 100);
+        System.out.println(ball.toString());
+        ball.SetX(20);
+        ball.SetY(12);
+        System.out.println("X= "+ball.GetX()+", Y= "+ball.GetY());
+        ball.SetXY(23,51);
+        System.out.println("X= "+ball.GetX()+", Y= "+ball.GetY());
+        ball.Move(30, 15);
+        System.out.println(ball.toString());
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+package com.company;
+
+public class Circle {	//number 1
+    private double radius;
+
+    public  Circle(double x)
+    {
+    radius=x;
+    }
+
+    public double GetRadius()
+    {
+        return  radius;
+    }
+
+    public void SetRadius(double radius)
+    {
+       this.radius=radius;
+    }
+
+    public void message()
+    {
+        System.out.println("Радиус окружности: " + radius);
+    }
+}
+
+
+package com.company;
+
+public class TestCircle
+{
+    public static void main(String[] args)
+    {
+        Circle a = new Circle(18.2);
+        a.SetRadius(2);
+        System.out.println(a.GetRadius());
+        a.message();
+    }
+}
+
+
+
+
+
+package com.company;	//number 2
+
+public class Human
+{
+    public static void main(String[] args)
+    {
+        Head a = new Head(7);
+        Leg b = new Leg (13);
+        Hand c= new Hand(5);
+        System.out.println("Вес головы: "+a.GetWeigth()+", Вес ног: "+b.GetWeigth()+", Вес рук: "+c.GetWeigth());
+    }
+}
+
+package com.company;
+
+public class Head {
+    private double weight;
+    public Head(double x)
+    {
+        weight=x;
+    }
+
+    public double GetWeigth()
+    {
+        return weight;
+    }
+}
+
+package com.company;
+
+public class Leg {
+    private double weight;
+
+    public Leg(double x)
+    {
+        weight=x;
+    }
+
+    public double GetWeigth()
+    {
+        return weight;
+    }
+}
+
+package com.company;
+
+public class Hand {
+    private double weigth;
+
+    public Hand(double x)
+    {
+        weigth=x;
+    }
+
+    public double GetWeigth()
+    {
+        return weigth;
+    }
+}
+
+
+
+
+
+
+
+package com.company;		//number 3
+
+public class Book
+{
+    private int year;
+    private String author;
+    private String name;
+
+    public Book(String a, String b, int c)
+    {
+        author=a;
+        name=b;
+        year=c;
+    }
+
+    public String GetName()
+    {
+        return name;
+    }
+
+    public int GetYear()
+    {
+        return year;
+    }
+
+    public String GetAuthor()
+    {
+        return  author;
+    }
+
+    public void SetName(String name)
+    {
+        this.name=name;
+    }
+
+    public  void SetYear(int year)
+    {
+        this.year=year;
+    }
+
+    public void SetAuthor(String author)
+    {
+        this.author=author;
+    }
+    public void message()
+    {
+        System.out.println("Автор: "+author+", Название: "+name+", Год: "+year);
+    }
+}
+
+package com.company;
+
+public class TestBook
+{
+    public static void main(String[] args) {
+        Book a = new Book("Автор книги","Название книги",0);
+        a.SetAuthor("Пушкин");
+        a.SetName("Капитанская дочка");
+        a.SetYear(1836);
+        System.out.println("Название: "+a.GetName()+", Автор: "+
+                a.GetAuthor()+", Год: "+a.GetYear());
+        a.message();
+    }
+}
