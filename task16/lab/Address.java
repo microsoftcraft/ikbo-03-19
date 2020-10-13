@@ -6,7 +6,7 @@ public class Address {
     private char buildingLetter;
     private Address EMPTY_Address;
 
-    public Address(String cityName,Strink streetName, int zipCode,int buildingNumber,int apartmentNumber)
+    public Address(String cityName,String streetName, int zipCode,int buildingNumber,int apartmentNumber)
     {
         this.cityName=cityName;
         this.streetName=streetName;
