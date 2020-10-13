@@ -6,6 +6,14 @@ public class Address {
     private char buildingLetter;
     private Address EMPTY_Address;
 
+    public Address(String cityName,Strink streetName, int zipCode,int buildingNumber,int apartmentNumber)
+    {
+        this.cityName=cityName;
+        this.streetName=streetName;
+        this.zipCode=zipCode;
+        this.buildingNumber=buildingNumber;
+        this.apartmentNumber=apartmentNumber;
+    }
     public String getCityName()
     {
         return cityName;
